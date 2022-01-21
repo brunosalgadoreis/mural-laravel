@@ -6,26 +6,27 @@
 
 @section('conteudo')
 
-
     <form method="post">
         @csrf
-        <div class="row">
-            <div class="col col-8">
-                <label for="nome" class="">Nome</label>
-                <input type="text" class="form-control" name="nome" id="nome">
+        <div class="row mb-2">
+            <div class="col col-8 d-flex justify-content-between align-items-center">
+                <label for="nome" class="mr-1">Nome</label>
+                <input type="text" class="form-control ml-1 mr-1" name="nome" id="nome">
+                <button class="btn btn-primary ml-1">Adicionar</button>
             </div>
         </div>
 
-        <button class="btn btn-primary mt-2">Adicionar</button>
+
     </form>
+    @include('intra.mensagem', ['mensagem' => $mensagem])
 
-
-    <ul class="list-group">
+    <ul class="list-group mt-4">
         @foreach ($cargo as $cargos)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $cargos->nome }}<br />
-                <form method="post" action="#" onsubmit="return confirm('Deseja remover?')">
+                <form method="post" action="/intra/cargo/{{ $cargos->id }}" onsubmit="return confirm('Deseja remover?')">
                     @csrf
+                    @method('DELETE')
                     <button class="btn btn-danger">Excluir</button>
                 </form>
             </li>

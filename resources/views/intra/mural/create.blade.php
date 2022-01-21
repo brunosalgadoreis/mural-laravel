@@ -6,6 +6,12 @@
 
 @section('conteudo')
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex border">
+        <a href="/intra/cargo" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Cargos</a>
+        <a href="/intra/operacao" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Operação</a>
+        <a href="/intra/user" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Usuários</a>
+    </nav>
+
     <form method="post">
         @csrf
         <div class="row">
@@ -32,9 +38,9 @@
     </form>
 
 
-    <ul class="list-group">
+    <ul class="list-group mt-4">
         @foreach ($mural as $murals)
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center mt-1 mb-1">
                 {{ $murals->titulo }}&nbsp&nbsp&nbsp{{ $murals->cargo->nome }}&nbsp&nbsp&nbsp
                 {{ $murals->operacao->nome }}
                 <br />

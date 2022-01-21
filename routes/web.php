@@ -3,6 +3,7 @@
 use App\Http\Controllers\IntraController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\FuncCall;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,29 +20,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/intra', 'IntraController@index')->name('mural');
 
-Route::get('/intra/user', 'UserController@create')->name('cad_user');
-Route::post('/intra/user', 'UserController@store');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/intra', 'Intra\IntraController@index')->name('mural');
+    Route::get('/intra/user', 'Intra\UserController@create')->name('cad_user');
+    Route::post('/intra/user', 'Intra\UserController@store');
+    Route::get('/intra/operacao', 'Intra\OperacaoController@create')->name('cad_operacao');
+    Route::post('/intra/operacao', 'Intra\OperacaoController@store');
+    Route::delete('/intra/operacao/{id}', 'Intra\OperacaoController@destroy');
+    Route::get('/intra/cargo', 'Intra\CargoController@create')->name('cad_cargo');
+    Route::post('/intra/cargo', 'Intra\CargoController@store');
+    Route::delete('/intra/cargo/{id}', 'Intra\CargoController@destroy');
+    Route::get('/intra/mural', 'Intra\MuralController@create')->name('cad_mural');
+    Route::post('/intra/mural', 'Intra\MuralController@store');
+});
+Route::get('/intra/entrar', 'Intra\EntrarController@index')->name('entrar');
+Route::post('/intra/entrar', 'Intra\EntrarController@entrar');
 
-Route::get('/intra/operacao', 'OperacaoController@create')->name('cad_operacao');
-Route::post('/intra/operacao', 'OperacaoController@store');
-
-Route::get('/intra/cargo', 'CargoController@create')->name('cad_cargo');
-Route::post('/intra/cargo', 'CargoController@store');
-
-Route::get('/intra/mural', 'MuralController@create')->name('cad_mural');
-Route::post('/intra/mural', 'MuralController@store');
-
-Route::get('/intra/entrar', 'EntrarController@index')->name('entrar');
-Route::post('/intra/entrar', 'EntrarController@entrar');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/sair', function () {
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/sair', function () {
 
     Auth::logout();
-    return redirect('/intra/entrar');
+    return redirect('intra/entrar');
 });
+
+

@@ -6,6 +6,8 @@
 
 @section('conteudo')
 
+@include('intra.erros', ['errors' => $errors])
+
     <form method="post">
         @csrf
         <div class="form-group">
