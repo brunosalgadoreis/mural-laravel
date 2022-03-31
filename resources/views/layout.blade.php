@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex justify-content-between">
-        <a class="navbar navbar-expand-lg" href="#">Home</a>
+        <a class="navbar navbar-expand-lg" href="/intra">Home</a>
         @auth
             <a href="/sair" class="text-danger">Sair</a>
         @endauth

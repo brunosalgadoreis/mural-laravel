@@ -40,12 +40,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cargo(){
-        return $this->belongsTo(Cargo::class, 'id', 'cargo_id');
+    public function cargo()
+    {
+        return $this->belongsTo(Cargo::class, 'cargo_id', 'id');
     }
 
-    public function operacao(){
-        return $this->belongsTo(Operacao::class, 'id', 'operacao_id');
+    public function operacao()
+    {
+        return $this->belongsTo(Operacao::class, 'operacao_id', 'id');
     }
-
 }

@@ -26,12 +26,14 @@ class OperacaoController extends Controller
 
     public function destroy(Request $request)
     {
-        
+
         $data = Operacao::find($request->id);
         $data->delete();
 
-        $request->session()->flash('mensagem',
-        "Operacao $data->nome removida com sucesso.");
+        $request->session()->flash(
+            'mensagem',
+            "Operacao $data->nome removida com sucesso."
+        );
 
         return redirect()->route('cad_operacao');
     }

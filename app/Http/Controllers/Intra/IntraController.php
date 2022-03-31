@@ -19,13 +19,14 @@ class IntraController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $mural = Mural::with('cargo', 'operacao')->where('cargo_id', $user->cargo_id)
-        ->where('operacao_id', $user->operacao_id)->get();
+        $mural = Mural::with('cargo', 'operacao')->whereIn('cargo_id', [$user->cargo_id, 5])
+            ->whereIn('operacao_id', [$user->operacao_id, 5])->get();
+
 
         //dd($mural);
         //$mural = Mural::with('cargo', 'operacao')->get();
-        
 
-        return view('intra.index', ['mural' => $mural, 'user' => $user]);
+
+        return view('intra.index', ['mural' => $mural, 'user' => $user,]);
     }
 }

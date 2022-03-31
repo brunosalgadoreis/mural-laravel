@@ -17,6 +17,6 @@ class Mural extends Model
 
     public function operacao()
     {
-        return $this->belongsTo(Operacao::class, 'cargo_id', 'id');
+        return $this->belongsTo(Operacao::class, 'operacao_id', 'id');
     }
 }
