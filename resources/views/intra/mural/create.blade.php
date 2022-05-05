@@ -50,6 +50,7 @@
                 </select>
                 <!--<input type="text" class="form-control" name="operacao_id" id="operacao_id">-->
             </div>
+            <input type="hidden" name="usuario_id" id="usuario_id" value="{{$user->id}}">
             <div class="col col-12">
                 <label for="post" class="">Postagem</label>
                 <textarea type="text" class="form-control" name="post" id="post"></textarea>
@@ -70,6 +71,7 @@
                             <h4><b>{{ $murals->titulo }}</b></h4>
                         </div>
                         <div class="d-flex">
+                            <div class="p-1 m-1"> {{ $murals->user->nome }}</div>
                             <div class="p-1 m-1 bg-info text-white rounded-pill"> {{ $murals->cargo->nome }}</div>
                             <div class="p-1 m-1 bg-secondary text-white rounded-pill">{{ $murals->operacao->nome }}</div>
                         </div>

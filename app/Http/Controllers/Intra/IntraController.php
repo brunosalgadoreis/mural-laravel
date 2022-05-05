@@ -19,9 +19,14 @@ class IntraController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $mural = Mural::with('cargo', 'operacao')->whereIn('cargo_id', [$user->cargo_id, 5])
-            ->whereIn('operacao_id', [$user->operacao_id, 5])->get();
-
+        if ($user->tipo != '1') {
+        $mural = Mural::with('cargo', 'operacao')->whereIn('cargo_id', [$user->cargo_id, "1"])
+            ->whereIn('operacao_id', [$user->operacao_id, "1"])->get();
+            $mural = Mural::paginate(5);
+        }else{
+            $mural = Mural::all();
+            $mural = Mural::paginate(5);
+        }
 
         //dd($mural);
         //$mural = Mural::with('cargo', 'operacao')->get();

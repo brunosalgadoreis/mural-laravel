@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Operacao::class, 'operacao_id', 'id');
     }
+
+    public function mural()
+    {
+        return $this->hasMany(Mural::class, 'mural_id', 'id');
+    }
 }

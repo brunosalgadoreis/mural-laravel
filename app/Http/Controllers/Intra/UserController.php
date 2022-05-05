@@ -22,7 +22,7 @@ class UserController extends Controller
         $user = User::with('cargo', 'operacao')->get();
         $cargo = Cargo::all();
         $operacao = Operacao::all();
-        return view('intra.user.create', ['user' => $user, 'cargo' => $cargo->except('5'), 'operacao' => $operacao->except('5')]);
+        return view('intra.user.create', ['user' => $user, 'cargo' => $cargo->except('1'), 'operacao' => $operacao->except('1')]);
     }
 
     public function store(Request $request)
@@ -40,15 +40,15 @@ class UserController extends Controller
         $cargo = Cargo::all();
         $operacao = Operacao::all();
         $user = User::find($id);
-        return view('intra.user.edit', ['user' => $user, 'cargo' => $cargo->except('5'), 'operacao' => $operacao->except('5')]);
+        return view('intra.user.edit', ['user' => $user, 'cargo' => $cargo->except('1'), 'operacao' => $operacao->except('1')]);
     }
 
     public function update(Request $request, $id)
     {
 
         //$data = $request->all();
-        $data = $request->except('_token');
-        $data['password'] = Hash::make($data['password']);
+        $data = $request->except('_token', 'password');
+        //$data['password'] = Hash::make($data['password']);
         User::find($id)->update($data);
         return redirect()->route('cad_user');
     }

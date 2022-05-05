@@ -58,10 +58,6 @@
                 </select>
                 <!--<input type="number" class="form-control" name="tipo" id="tipo">-->
             </div>
-            <div class="col col-2">
-                <label for="senha" class="">Senha</label>
-                <input type="password" class="form-control" name="password" id="password" value="{{ $user->password }}">
-            </div>
             <div class="col col-4">
                 <label for="email" class="">Email</label>
                 <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}">

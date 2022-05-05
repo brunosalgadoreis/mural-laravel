@@ -8,7 +8,7 @@ class Mural extends Model
 {
     protected $table = 'murals';
 
-    protected $fillable = ['titulo', 'cargo_id', 'operacao_id', 'post'];
+    protected $fillable = ['titulo', 'cargo_id', 'operacao_id', 'usuario_id', 'post'];
 
     public function cargo()
     {
@@ -19,4 +19,10 @@ class Mural extends Model
     {
         return $this->belongsTo(Operacao::class, 'operacao_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'usuario_id', 'id');
+    }
+
 }

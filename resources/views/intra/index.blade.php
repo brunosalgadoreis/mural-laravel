@@ -27,6 +27,7 @@
                             <h4><b>{{ $murals->titulo }}</b></h4>
                         </div>
                         <div class="d-flex">
+                            <div class="p-1 m-1"> {{ $murals->user->nome }}</div>
                             <div class="p-1 m-1 bg-info text-white rounded-pill"> {{ $murals->cargo->nome }}</div>
                             <div class="p-1 m-1 bg-secondary text-white rounded-pill">{{ $murals->operacao->nome }}</div>
                         </div>

@@ -20,6 +20,8 @@ class CreateMuralsTable extends Migration
             $table->foreign('cargo_id')->references('id')->on('cargos');
             $table->string('operacao_id');
             $table->foreign('operacao_id')->references('id')->on('operacaos');
+            $table->string('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('users');
             $table->string('post');
             $table->timestamps();
         });
