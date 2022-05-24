@@ -1,31 +1,83 @@
-@extends('layout')
+@extends('layouts.adminlte')
 
 @section('cabecalho')
     Mural
 @endsection
 
+@section('sidebar')
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+data-accordion="false">
+<li class="nav-item">
+    <a href="/intra" class="nav-link">
+        <i class="nav-icon fas fa-edit"></i>
+        <p>
+            SimpleWall
+            <span class="right badge badge-danger">New</span>
+        </p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="/intra/mural" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
+            AdminWall
+        </p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="/intra/user" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
+            Usuarios
+        </p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="/intra/cargo" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
+            Cargo
+        </p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="/intra/operacao" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
+            Operação
+        </p>
+    </a>
+</li>
+@endsection
+
 @section('conteudo')
+<div class="card-body">
     <div class="row m-2 d-flex align-items-center justify-content-between">
         <div class="">
-            <h4><b>{{ $user->nome }}</b></h4>
+            <h4 class="m-0"><b>{{ $user->nome }}</b></h4>
         </div>
         <div class="d-flex">
-            <div class="p-1 m-1 bg-info text-white rounded-pill">{{ $user->cargo->nome }}</div>
-            <div class="p-1 m-1 bg-secondary text-white rounded-pill">{{ $user->operacao->nome }}</div>
+            <div class="p-1 m-1 text-white rounded-pill badge badge-info">{{ $user->cargo->nome }}</div>
+            <div class="p-1 m-1 text-white rounded-pill badge badge-secondary">{{ $user->operacao->nome }}</div>
         </div>
     </div>
 
-    <hr />
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex border">
+    <hr class="mt-0"/>
+
+    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex border">
         <a href="/intra/mural" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Mural</a>
         <a href="/intra/cargo" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Cargos</a>
         <a href="/intra/operacao" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Operação</a>
         <a href="/intra/user" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Usuários</a>
-    </nav>
+    </nav>-->
 
     <form method="post">
         @csrf
-        <div class="row">
+        <div class="row card-body">
             <div class="col col-8">
                 <label for="titulo" class="">Título</label>
                 <input type="text" class="form-control" name="titulo" id="titulo">
@@ -54,41 +106,46 @@
             <div class="col col-12">
                 <label for="post" class="">Postagem</label>
                 <textarea type="text" class="form-control" name="post" id="post"></textarea>
+                <button class="btn btn-primary mt-2">Adicionar</button>
             </div>
-
+            
         </div>
 
-        <button class="btn btn-primary mt-2">Adicionar</button>
+        
     </form>
 
     <hr />
-    <ul class="list-group mt-4">
+   
         @foreach ($mural as $murals)
-            <div>
-                <li class="list-group-item mb-2">
-                    <div class="row ml-2 d-flex align-items-center justify-content-between">
+            
+                <li class="card">
+                    <div class="row mx-2 d-flex align-items-center justify-content-between">
                         <div>
                             <h4><b>{{ $murals->titulo }}</b></h4>
                         </div>
                         <div class="d-flex">
-                            <div class="p-1 m-1"> {{ $murals->user->nome }}</div>
-                            <div class="p-1 m-1 bg-info text-white rounded-pill"> {{ $murals->cargo->nome }}</div>
-                            <div class="p-1 m-1 bg-secondary text-white rounded-pill">{{ $murals->operacao->nome }}</div>
+                            <div class="p-1 m-1 badge"> {{ $murals->user->nome }}</div>
+                            <div class="p-1 m-1 text-white rounded-pill badge badge-info"> {{ $murals->cargo->nome }}</div>
+                            <div class="p-1 m-1 text-white rounded-pill badge badge-secondary">{{ $murals->operacao->nome }}</div>
                         </div>
                     </div>
 
-                    <hr />
+                    <hr class="mt-0"/>
                     <div class="row ml-2 d-flex align-items-center justify-content-between">
                         {{ $murals->post }}
                         <form method="post" action="/intra/mural/{{ $murals->id }}"
                             onsubmit="return confirm('Deseja remover?')">
+                            <div class="m-3">
                             @csrf
+                            <button class="btn btn-primary btn-sm">Editar</button>
                             @method('DELETE')
-                            <button class="btn btn-danger m-2">Excluir</button>
+                            <button class="btn btn-danger btn-sm">Excluir</button>
+                            </div>
                         </form>
                     </div>
                     
                 </li>
         @endforeach
-    </ul>
+    
 @endsection
+   </div>                

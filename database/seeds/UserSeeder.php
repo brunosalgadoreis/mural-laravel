@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'operacao_id' => '1',
             'tipo' => '1',
             'email' => 'admin@admin',
-            'password' => Hash::make('123')
+            'password' => bcrypt('123')
         ]);
     }
 }
