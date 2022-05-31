@@ -1,31 +1,38 @@
-@extends('layout')
+@extends('layouts.login')
 
-@section('cabecalho')
-    Login
-@endsection
+
 
 @section('conteudo')
 
     @include('intra.erros', ['errors' => $errors])
 
-    <form method="post">
-        @csrf
-        <div class="form-group">
-            <label for="cpf">CPF</label>
-            <input type="text" name="cpf" id="cpf" required class="form-control">
+    @section('cabecalho')
+    Login
+    @endsection
+
+    <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Login</h3>
         </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post">
+            @csrf
+          <div class="card-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">CPF</label>
+              <input type="text" class="form-control" name="cpf" id="cpf" required  placeholder="Entre com CPF">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" name="password" id="password" required min="1" placeholder="Senha">
+            </div>
+          </div>
+          <!-- /.card-body -->
 
-        <div class="form-group">
-            <label for="password">Senha</label>
-            <input type="password" name="password" id="password" required min="1" class="form-control">
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-3">
-            Entrar
-        </button>
-
-    </form>
-
-
-
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Entrar</button>
+          </div>
+        </form>
+      </div>
 @endsection

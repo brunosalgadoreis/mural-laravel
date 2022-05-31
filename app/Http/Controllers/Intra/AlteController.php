@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Intra;
 
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AlteController extends Controller
 {
     public function index()
     {
-        return view('intra.alte');
+
+        $user = Auth::user();
+        return view('layouts.adminlte', ['user' => $user]);
     }
 }

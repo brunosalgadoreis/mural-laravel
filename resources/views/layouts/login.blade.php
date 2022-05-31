@@ -99,91 +99,10 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                
+                <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">SimpleWall</span>
             </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                            alt="User Image">
-                    </div>
-                    @auth
-                    <div class="info">
-                        <!--<a href="#" class="d-block">//{ $user->nome }}</a>-->
-                        <a href="#" class="d-block">Um Nome</a>
-                    </div>
-                </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-item">
-                            <a href="/intra" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    SimpleWall
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/intra/mural" class="nav-link">
-                                <i class="nav-icon fas fa-clipboard"></i>
-                                <p>
-                                    AdminWall
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/intra/user" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Usuarios
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/intra/cargo" class="nav-link">
-                                <i class="nav-icon fas fa-arrows-alt"></i>
-                                <p>
-                                    Cargo
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/intra/operacao" class="nav-link">
-                                <i class="nav-icon fas fa-copyright"></i>
-                                <p>
-                                    Operação
-                                </p>
-                            </a>
-                        </li>
-                </nav>
-                @endauth
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
@@ -197,7 +116,7 @@
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/entrar">Home</a></li>
                                 <li class="breadcrumb-item active">@yield('cabecalho')</li>
                             </ol>
                         </div><!-- /.col -->
@@ -246,6 +165,15 @@
             <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
+            <!-- Script CPF Mode -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <script>
+                $("#cpf").keypress(function() {
+                    $(this).mask('000.000.000-00');
+                });
+            </script>
 </body>
 
 </html>
