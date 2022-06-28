@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'cpf' => '111.111.111-11',
             'cargo_id' => '1',
             'operacao_id' => '1',
-            'tipo' => '1',
+            'is_admin' => '1',
             'email' => 'admin@admin',
             'password' => bcrypt('123')
         ]);

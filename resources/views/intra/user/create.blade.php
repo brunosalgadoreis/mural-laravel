@@ -5,12 +5,6 @@
 @endsection
 
 @section('conteudo')
-    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex border">
-                <a href="/intra/mural" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Mural</a>
-                <a href="/intra/cargo" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Cargos</a>
-                <a href="/intra/operacao" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Operação</a>
-                <a href="/intra/user" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Usuários</a>
-            </nav>-->
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Cadastrar</h3>
@@ -35,8 +29,6 @@
                                 <option value="{{ $carg->id }}">{{ $carg->nome }}</option>
                             @endforeach
                         </select>
-
-                        <!--<input type="text" class="form-control" name="cargo_id" id="cargo_id">-->
                     </div>
                     <div class="col col-2">
                         <label for="operacao_id" class="">Operação</label>
@@ -46,17 +38,14 @@
                                 <option value="{{ $operac->id }}">{{ $operac->nome }}</option>
                             @endforeach
                         </select>
-
-                        <!--<input type="text" class="form-control" name="operacao_id" id="operacao_id">-->
                     </div>
                     <div class="col col-2">
                         <label for="tipo" class="">Tipo</label>
 
-                        <select class="form-control" name="tipo" id="tipo">
+                        <select class="form-control" name="is_admin" id="is_admin">
                             <option value="1">ADM</option>
-                            <option value="2">User</option>
+                            <option value="0">User</option>
                         </select>
-                        <!--<input type="number" class="form-control" name="tipo" id="tipo">-->
                     </div>
                     <div class="col col-2">
                         <label for="senha" class="">Senha</label>
@@ -74,8 +63,8 @@
     </div>
     </div>
     <hr />
-    
-        @foreach ($user as $users)
+
+    @foreach ($user as $users)
         <div class="card">
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $users->nome }}
@@ -95,6 +84,5 @@
                 </div>
             </li>
         </div>
-        @endforeach
-    
+    @endforeach
 @endsection

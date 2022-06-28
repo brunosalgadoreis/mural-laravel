@@ -98,8 +98,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                
+            <a href="#" class="brand-link">
                 <span class="brand-text font-weight-light">SimpleWall</span>
             </a>
 
@@ -111,10 +110,10 @@
                         <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
-                    @auth
+
                     <div class="info">
-                        <!--<a href="#" class="d-block">//{ $user->nome }}</a>-->
-                        <a href="#" class="d-block">Um Nome</a>
+                        <a href="#" class="d-block">{{ $authuser->nome }}</a>
+                        <!--<a href="#" class="d-block">Um Nome</a>-->
                     </div>
                 </div>
 
@@ -135,6 +134,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        
                         <li class="nav-item">
                             <a href="/intra" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -143,7 +143,7 @@
                                 </p>
                             </a>
                         </li>
-
+                        @if($authuser->is_admin)
                         <li class="nav-item">
                             <a href="/intra/mural" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard"></i>
@@ -152,7 +152,7 @@
                                 </p>
                             </a>
                         </li>
-
+                        
                         <li class="nav-item">
                             <a href="/intra/user" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
@@ -161,7 +161,7 @@
                                 </p>
                             </a>
                         </li>
-
+                        
                         <li class="nav-item">
                             <a href="/intra/cargo" class="nav-link">
                                 <i class="nav-icon fas fa-arrows-alt"></i>
@@ -170,7 +170,7 @@
                                 </p>
                             </a>
                         </li>
-
+                        
                         <li class="nav-item">
                             <a href="/intra/operacao" class="nav-link">
                                 <i class="nav-icon fas fa-copyright"></i>
@@ -179,8 +179,9 @@
                                 </p>
                             </a>
                         </li>
+                        @endif
                 </nav>
-                @endauth
+
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -246,6 +247,15 @@
             <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
+            <!-- Script CPF Mode -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <script>
+                $("#cpf").keypress(function() {
+                    $(this).mask('000.000.000-00');
+                });
+            </script>
 </body>
 
 </html>

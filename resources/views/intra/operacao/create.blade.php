@@ -5,12 +5,6 @@
 @endsection
 
 @section('conteudo')
-    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex border">
-            <a href="/intra/mural" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Mural</a>
-            <a href="/intra/cargo" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Cargos</a>
-            <a href="/intra/operacao" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Operação</a>
-            <a href="/intra/user" class="btn btn-primary btn-lg active m-1" role="button" aria-pressed="true">Usuários</a>
-        </nav>-->
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Cadastrar</h3>

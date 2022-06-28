@@ -15,17 +15,15 @@ class EntrarController extends Controller
 
     public function entrar(Request $request)
     {
-        //dd(Auth::attempt($request->only(['cpf', 'password'])));
 
         if (!Auth::attempt($request->only(['cpf', 'password']))) {
-            //dd($request);
             return redirect()
                 ->back()
                 ->withErrors('Usuário e/ou senha incorretos');
         }
 
         $user = Auth::user();
-        if ($user->tipo == '1') {
+        if ($user->is_admin == '1') {
             return redirect()->route('cad_mural');
         }
 

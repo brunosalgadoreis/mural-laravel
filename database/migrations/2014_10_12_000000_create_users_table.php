@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->foreign('cargo_id')->references('id')->on('cargos');
             $table->string('operacao_id');
             $table->foreign('operacao_id')->references('id')->on('operacaos');
-            $table->integer('tipo');
+            //$table->integer('tipo');
+            $table->boolean('is_admin')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
