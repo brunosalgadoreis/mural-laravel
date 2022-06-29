@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SimpleWall | @yield('cabecalho')</title>
+    <title>SimpleWall | @yield('header')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -47,10 +47,10 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     @auth
-                        <a href="/sair" class="nav-link text-danger">Sair</a>
+                        <a href="/exit" class="nav-link text-danger">Sair</a>
                     @endauth
                     @guest
-                        <a href="/intra/entrar" class="nav-link">Entrar</a>
+                        <a href="/intra/login" class="nav-link">Entrar</a>
                     @endguest
                 </li>
             </ul>
@@ -145,7 +145,7 @@
                         </li>
                         @if ($authuser->is_admin)
                             <li class="nav-item">
-                                <a href="/intra/mural" class="nav-link">
+                                <a href="/intra/wall" class="nav-link">
                                     <i class="nav-icon fas fa-clipboard"></i>
                                     <p>
                                         AdminWall
@@ -163,7 +163,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="/intra/cargo" class="nav-link">
+                                <a href="/intra/role" class="nav-link">
                                     <i class="nav-icon fas fa-arrows-alt"></i>
                                     <p>
                                         Cargo
@@ -172,7 +172,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="/intra/operacao" class="nav-link">
+                                <a href="/intra/operation" class="nav-link">
                                     <i class="nav-icon fas fa-copyright"></i>
                                     <p>
                                         Operação
@@ -194,12 +194,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">@yield('cabecalho')</h1>
+                            <h1 class="m-0">@yield('header')</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">@yield('cabecalho')</li>
+                                <li class="breadcrumb-item active">@yield('header')</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -208,7 +208,7 @@
             <!-- /.content-header -->
             <section class="content">
                 <div class="container-fluid">
-                    @yield('conteudo')
+                    @yield('content')
                 </div>
             </section>
             <!-- ./wrapper -->

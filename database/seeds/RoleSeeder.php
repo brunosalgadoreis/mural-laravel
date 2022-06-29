@@ -1,9 +1,9 @@
 <?php
 
-use App\Cargo;
+use App\Role;
 use Illuminate\Database\Seeder;
 
-class PositionSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,8 @@ class PositionSeeder extends Seeder
      */
     public function run()
     {
-        Cargo::create([
-            'nome' => 'todos'
+        Role::create([
+            'name' => 'todos'
         ]);
     }
 }

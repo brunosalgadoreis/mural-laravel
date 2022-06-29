@@ -1,6 +1,6 @@
 <?php
 
-use App\Operacao;
+use App\Operation;
 use Illuminate\Database\Seeder;
 
 class OperationSeeder extends Seeder
@@ -12,8 +12,8 @@ class OperationSeeder extends Seeder
      */
     public function run()
     {
-        Operacao::create([
-            'nome' => 'todos'
+        Operation::create([
+            'name' => 'todos'
         ]);
     }
 }

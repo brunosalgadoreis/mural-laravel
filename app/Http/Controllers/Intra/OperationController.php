@@ -2,42 +2,41 @@
 
 namespace App\Http\Controllers\Intra;
 
-use App\Cargo;
 use App\Http\Controllers\Controller;
+use App\Operation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CargoController extends Controller
+class OperationController extends Controller
 {
 
     public function create(Request $request)
     {
         $authuser = Auth::user();
-        $cargo = Cargo::all();
+        $operation = Operation::all();
         $mensagem = $request->session()->get('mensagem');
 
-        return view('intra.cargo.create', ['cargo' => $cargo, 'mensagem' => $mensagem, 'authuser' => $authuser]);
+        return view('intra.operation.create', ['operation' => $operation, 'mensagem' => $mensagem, 'authuser' => $authuser]);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        Cargo::create($data);
-        $request->session()->flash('mensagem', 'Cargo criado com sucesso');
+        Operation::create($data);
+        $request->session()->flash('mensagem', 'Operação criada com sucesso');
 
-        return redirect()->route('cad_cargo');
+        return redirect()->route('cad_operation');
     }
 
     public function destroy(Request $request)
     {
-
-        $data = Cargo::find($request->id);
+        $data = Operation::find($request->id);
         $data->delete();
         $request->session()->flash(
             'mensagem',
-            "Cargo $data->nome removido com sucesso."
+            "Operacao $data->nome removida com sucesso."
         );
 
-        return redirect()->route('cad_cargo');
+        return redirect()->route('cad_operation');
     }
 }

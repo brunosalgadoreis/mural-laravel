@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EntrarController extends Controller
+class LoginController extends Controller
 {
     public function index()
     {
-        return view('intra.entrar.index');
+        return view('intra.login.index');
     }
 
-    public function entrar(Request $request)
+    public function login(Request $request)
     {
 
         if (!Auth::attempt($request->only(['cpf', 'password']))) {
@@ -24,9 +24,9 @@ class EntrarController extends Controller
 
         $user = Auth::user();
         if ($user->is_admin == '1') {
-            return redirect()->route('cad_mural');
+            return redirect()->route('cad_wall');
         }
 
-        return redirect()->route('mural');
+        return redirect()->route('wall');
     }
 }

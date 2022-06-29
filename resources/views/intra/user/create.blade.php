@@ -1,10 +1,10 @@
 @extends('layouts.adminlte')
 
-@section('cabecalho')
+@section('header')
     Usuários
 @endsection
 
-@section('conteudo')
+@section('content')
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Cadastrar</h3>
@@ -14,41 +14,38 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col col-8">
-                        <label for="nome" class="">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome">
+                        <label for="name" class="">Nome</label>
+                        <input type="text" class="form-control" name="name" id="name">
                     </div>
                     <div class="col col-4">
                         <label for="cpf" class="">CPF</label>
                         <input type="text" class="form-control" name="cpf" id="cpf">
                     </div>
                     <div class="col col-2">
-                        <label for="cargo_id" class="">Cargo</label>
-
-                        <select class="form-control" name="cargo_id" id="cargo_id">
-                            @foreach ($cargo as $carg)
-                                <option value="{{ $carg->id }}">{{ $carg->nome }}</option>
+                        <label for="role_id" class="">Cargo</label>
+                        <select class="form-control" name="role_id" id="role_id">
+                            @foreach ($role as $roles)
+                                <option value="{{ $roles->id }}">{{ $roles->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col col-2">
-                        <label for="operacao_id" class="">Operação</label>
-
-                        <select class="form-control" name="operacao_id" id="operacao_id">
-                            @foreach ($operacao as $operac)
-                                <option value="{{ $operac->id }}">{{ $operac->nome }}</option>
+                        <label for="operation_id" class="">Operação</label>
+                        <select class="form-control" name="operation_id" id="operation_id">
+                            @foreach ($operation as $operations)
+                                <option value="{{ $operations->id }}">{{ $operations->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col col-2">
-                        <label for="tipo" class="">Tipo</label>
-
+                        <label for="is_admin" class="">Tipo</label>
                         <select class="form-control" name="is_admin" id="is_admin">
                             <option value="1">ADM</option>
                             <option value="0">User</option>
                         </select>
                     </div>
                     <div class="col col-2">
-                        <label for="senha" class="">Senha</label>
+                        <label for="password" class="">Senha</label>
                         <input type="password" class="form-control" name="password" id="password">
                     </div>
                     <div class="col col-4">
@@ -67,10 +64,10 @@
     @foreach ($user as $users)
         <div class="card">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ $users->nome }}
+                {{ $users->name }}
                 <div class="d-flex">
-                    <div class="p-1 m-1 bg-info text-white rounded-pill">{{ $users->cargo->nome }}</div>
-                    <div class="p-1 m-1 bg-secondary text-white rounded-pill">{{ $users->operacao->nome }}</div>
+                    <div class="p-1 m-1 bg-info text-white rounded-pill">{{ $users->role->name }}</div>
+                    <div class="p-1 m-1 bg-secondary text-white rounded-pill">{{ $users->operation->name }}</div>
                 </div>
                 <br />
                 <div class="d-flex">

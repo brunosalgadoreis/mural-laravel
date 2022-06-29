@@ -1,48 +1,46 @@
 @extends('layouts.adminlte')
 
-@section('cabecalho')
+@section('header')
     Usuários
 @endsection
 
-@section('conteudo')
+@section('content')
     <form action="/intra/user/update/{{ $user->id }}" method="post">
         @csrf
         <input type="hidden" name="_method" value="put">
         <div class="row">
             <div class="col col-8">
-                <label for="nome" class="">Nome</label>
-                <input type="text" class="form-control" name="nome" id="nome" value="{{ $user->nome }}">
+                <label for="name" class="">Nome</label>
+                <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}">
             </div>
             <div class="col col-4">
                 <label for="cpf" class="">CPF</label>
                 <input type="text" class="form-control" name="cpf" id="cpf" value="{{ $user->cpf }}">
             </div>
             <div class="col col-2">
-                <label for="cargo_id" class="">Cargo</label>
-
-                <select class="form-control" name="cargo_id" id="cargo_id">
-                    <option value="{{ $user->cargo->id }}">{{ $user->cargo->nome }}</option>
-                    @foreach ($cargo as $carg)
-                        <option value="{{ $carg->id }}">{{ $carg->nome }}</option>
+                <label for="role_id" class="">Cargo</label>
+                <select class="form-control" name="role_id" id="role_id">
+                    <option value="{{ $user->role->id }}">{{ $user->role->name }}</option>
+                    @foreach ($role as $roles)
+                        <option value="{{ $roles->id }}">{{ $roles->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col col-2">
-                <label for="operacao_id" class="">Operação</label>
-
-                <select class="form-control" name="operacao_id" id="operacao_id">
-                    <option value="{{ $user->operacao->id }}">{{ $user->operacao->nome }}</option>
-                    @foreach ($operacao as $operac)
-                        <option value="{{ $operac->id }}">{{ $operac->nome }}</option>
+                <label for="operation_id" class="">Operação</label>
+                <select class="form-control" name="operation_id" id="operation_id">
+                    <option value="{{ $user->operation->id }}">{{ $user->operation->name }}</option>
+                    @foreach ($operation as $operations)
+                        <option value="{{ $operations->id }}">{{ $operations->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col col-2">
-                <label for="tipo" class="">Tipo</label>
+                <label for="is_admin" class="">Tipo</label>
 
-                <select class="form-control" name="tipo" id="tipo">
-                    <option value="{{ $user->tipo }}">
-                        @if ($user->tipo == '1')
+                <select class="form-control" name="is_admin" id="is_admin">
+                    <option value="{{ $user->is_admin }}">
+                        @if ($user->is_admin == '1')
                             ADM
                         @else
                             USER

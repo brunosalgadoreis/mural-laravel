@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Intra;
 
-use App\Cargo;
 use App\Http\Controllers\Controller;
-use App\Operacao;
+use App\Operation;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -12,10 +12,10 @@ class RegisterController extends Controller
 {
     public function create()
     {
-        $cargo = Cargo::all();
-        $operacao = Operacao::all();
+        $role = Role::all();
+        $operation = Operation::all();
 
-        return view('intra.register.create', ['cargo' => $cargo->except('1'), 'operacao' => $operacao->except('1')]);
+        return view('intra.register.create', ['role' => $role->except('1'), 'operacao' => $operation->except('1')]);
     }
 
     public function store(Request $request)

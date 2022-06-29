@@ -19,7 +19,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'nome', 'cpf', 'password', 'email', 'cargo_id', 'operacao_id', 'is_admin'
+        'name', 'cpf', 'password', 'email', 'role_id', 'operation_id', 'is_admin'
     ];
 
     /**
@@ -40,18 +40,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cargo()
+    public function role()
     {
-        return $this->belongsTo(Cargo::class, 'cargo_id', 'id');
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
-    public function operacao()
+    public function operation()
     {
-        return $this->belongsTo(Operacao::class, 'operacao_id', 'id');
+        return $this->belongsTo(Operation::class, 'operation_id', 'id');
     }
 
-    public function mural()
+    public function wall()
     {
-        return $this->hasMany(Mural::class, 'mural_id', 'id');
+        return $this->hasMany(Wall::class, 'wall_id', 'id');
     }
 }
