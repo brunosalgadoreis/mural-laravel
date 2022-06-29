@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/intra', 'Intra\IntraController@index')->name('mural');
 
-    Route::middleware(['admin'])->group( function () {
+    Route::middleware(['admin'])->group(function () {
 
         Route::get('/intra/user', 'Intra\UserController@create')->name('cad_user');
         Route::post('/intra/user', 'Intra\UserController@store');
@@ -44,11 +44,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/intra/mural', 'Intra\MuralController@store');
         Route::delete('/intra/mural/{id}', 'Intra\MuralController@destroy');
     });
-
-    Route::get('/intra/adminlte', 'Intra\AlteController@index')->name('alte');
 });
 Route::get('/intra/entrar', 'Intra\EntrarController@index')->name('entrar');
 Route::post('/intra/entrar', 'Intra\EntrarController@entrar');
+
+Route::get('/intra/register', 'Intra\RegisterController@create')->name('register');
+Route::post('/intra/register', 'Intra\RegisterController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -112,8 +112,8 @@
                     </div>
 
                     <div class="info">
-                        <a href="#" class="d-block">{{ $authuser->nome }}</a>
-                        <!--<a href="#" class="d-block">Um Nome</a>-->
+                        <!--<a href="#" class="d-block">{{ $authuser->nome }}</a>-->
+                        <a href="#" class="d-block">Um Nome</a>
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        
+
                         <li class="nav-item">
                             <a href="/intra" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -143,42 +143,42 @@
                                 </p>
                             </a>
                         </li>
-                        @if($authuser->is_admin)
-                        <li class="nav-item">
-                            <a href="/intra/mural" class="nav-link">
-                                <i class="nav-icon fas fa-clipboard"></i>
-                                <p>
-                                    AdminWall
-                                </p>
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a href="/intra/user" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Usuarios
-                                </p>
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a href="/intra/cargo" class="nav-link">
-                                <i class="nav-icon fas fa-arrows-alt"></i>
-                                <p>
-                                    Cargo
-                                </p>
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a href="/intra/operacao" class="nav-link">
-                                <i class="nav-icon fas fa-copyright"></i>
-                                <p>
-                                    Operação
-                                </p>
-                            </a>
-                        </li>
+                        @if ($authuser->is_admin)
+                            <li class="nav-item">
+                                <a href="/intra/mural" class="nav-link">
+                                    <i class="nav-icon fas fa-clipboard"></i>
+                                    <p>
+                                        AdminWall
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/intra/user" class="nav-link">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>
+                                        Usuarios
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/intra/cargo" class="nav-link">
+                                    <i class="nav-icon fas fa-arrows-alt"></i>
+                                    <p>
+                                        Cargo
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/intra/operacao" class="nav-link">
+                                    <i class="nav-icon fas fa-copyright"></i>
+                                    <p>
+                                        Operação
+                                    </p>
+                                </a>
+                            </li>
                         @endif
                 </nav>
 
