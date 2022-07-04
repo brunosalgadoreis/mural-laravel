@@ -1,5 +1,13 @@
 @extends('layouts.adminlte')
 
+@section('username')
+{{ $authuser->name }}
+@endsection
+
+@section('photo')
+    {{ $authuser->photo }}
+@endsection
+
 @section('header')
     Mural
 @endsection
@@ -87,4 +95,5 @@
             </div>
         </div>
     @endforeach
+    {{ $wall->links() }}
 @endsection

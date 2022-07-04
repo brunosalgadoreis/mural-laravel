@@ -1,5 +1,13 @@
 @extends('layouts.adminlte')
 
+@section('username')
+{{ $authuser->name }}
+@endsection
+
+@section('photo')
+    {{ $authuser->photo }}
+@endsection
+
 @section('header')
     Operação
 @endsection

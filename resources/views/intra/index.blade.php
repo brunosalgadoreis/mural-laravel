@@ -1,5 +1,13 @@
 @extends('layouts.adminlte')
 
+@section('username')
+{{ $authuser->name }}
+@endsection
+
+@section('photo')
+    {{ $authuser->photo }}
+@endsection
+
 @section('header')
     SimpleWall
 @endsection
@@ -34,7 +42,7 @@
                     <h4><b>{{ $walls->title }}</b></h4>
                 </div>
                 <div class="d-flex">
-                    <div class="p-1 m-1 badge">{{ $authuser->name }}</div>
+                    <div class="p-1 m-1 badge">{{ $walls->user->name }}</div>
                     <div class="p-1 m-1 text-white rounded-pill badge badge-info">{{ $walls->role->name }}</div>
                     <div class="p-1 m-1 text-white rounded-pill badge badge-secondary">
                         {{ $walls->operation->name }}</div>
@@ -45,6 +53,8 @@
             <div class="row ml-2">
                 {{ $walls->post }}
             </div>
+            
         </div>
     @endforeach
+    {{ $wall->links() }}
 @endsection

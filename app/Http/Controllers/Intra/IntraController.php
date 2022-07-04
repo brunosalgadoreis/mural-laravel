@@ -18,15 +18,15 @@ class IntraController extends Controller
     public function index()
     {
         $authuser = Auth::user();
-        if ($authuser->is_admin == '0') { //resolver essa regra
-            $wall = Wall::with('role', 'operation')->whereIn('role_id', [$authuser->role_id, "1"])
-                ->whereIn('operation_id', [$authuser->operation_id, "1"])->get();
-            $wall = Wall::paginate(5);
+        if ($authuser->is_admin == '0') { 
+            $wall = Wall::with('role', 'operation')
+                ->whereIn('role_id', [$authuser->role_id, "1"])
+                ->whereIn('operation_id', [$authuser->operation_id, "1"])
+                ->paginate(10);
         } else {
-            $wall = Wall::all();
-            $wall = Wall::paginate(5);
+            $wall = Wall::paginate(10);
+            
         }
-
         return view('intra.index', ['wall' => $wall, 'authuser' => $authuser,]);
     }
 }

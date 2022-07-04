@@ -16,11 +16,10 @@ class WallController extends Controller
     public function create()
     {
         $authuser = Auth::user();
-        //dd($authuser);
         $role = Role::all();
         $operation = Operation::all();
         if ($authuser->is_admin) {
-            $wall = Wall::with('role', 'operation')->get();
+            $wall = Wall::with('role', 'operation')->paginate(10);
             return view('intra.wall.create', ['wall' => $wall, 'role' => $role, 'operation' => $operation, 'authuser' => $authuser]);
         }
 

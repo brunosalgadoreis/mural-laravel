@@ -44,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/intra/wall', 'Intra\WallController@store');
         Route::delete('/intra/wall/{id}', 'Intra\WallController@destroy');
     });
+    Route::get('/intra/user/editUser/{user}', 'Intra\UserController@editUser');
+    Route::put('/intra/user/update/{id}', 'Intra\UserController@update');
 });
 Route::get('/intra/login', 'Intra\LoginController@index')->name('loginsw');
 Route::post('/intra/login', 'Intra\LoginController@login');

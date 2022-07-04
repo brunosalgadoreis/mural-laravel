@@ -43,16 +43,18 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/intra" class="nav-link">Home</a>
-
                 </li>
+                @auth
                 <li class="nav-item d-none d-sm-inline-block">
-                    @auth
+                    <a href="/intra/user/editUser/{{ $authuser->id }}" class="nav-link">Perfil</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">   
                         <a href="/exit" class="nav-link text-danger">Sair</a>
                     @endauth
                     @guest
                         <a href="/intra/login" class="nav-link">Entrar</a>
-                    @endguest
                 </li>
+                @endguest
             </ul>
 
             <!-- Right navbar links -->
@@ -107,13 +109,15 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        <!--<img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                            alt="User Image">-->
+                            <img src="{{ url('Image/'.$authuser->photo) }}" class="img-circle elevation-2"
                             alt="User Image">
+
                     </div>
 
                     <div class="info">
-                        <!--<a href="#" class="d-block">{{ $authuser->nome }}</a>-->
-                        <a href="#" class="d-block">Um Nome</a>
+                        <a href="#" class="d-block">@yield('username')</a>
                     </div>
                 </div>
 

@@ -1,5 +1,13 @@
 @extends('layouts.adminlte')
 
+@section('username')
+    {{ $authuser->name }}
+@endsection
+
+@section('photo')
+    {{ $authuser->photo }}
+@endsection
+
 @section('header')
     Usuários
 @endsection
@@ -57,7 +65,7 @@
 
                 <button class="btn btn-primary mt-2">Adicionar</button>
         </form>
-    </div>
+            </div>
     </div>
     <hr />
 

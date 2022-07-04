@@ -15,7 +15,7 @@ class RegisterController extends Controller
         $role = Role::all();
         $operation = Operation::all();
 
-        return view('intra.register.create', ['role' => $role->except('1'), 'operacao' => $operation->except('1')]);
+        return view('intra.register.create', ['role' => $role->except('1'), 'operation' => $operation->except('1')]);
     }
 
     public function store(Request $request)
@@ -24,6 +24,6 @@ class RegisterController extends Controller
         $data['password'] = bcrypt($data['password']);
         User::create($data);
 
-        return redirect()->route('entrar');
+        return redirect()->route('loginsw');
     }
 }

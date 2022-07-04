@@ -31,18 +31,41 @@ class UserController extends Controller
         return redirect()->route('cad_user');
     }
 
+    public function editUser(User $user)
+    {
+        $authuser = Auth::user();
+        $role = Role::all();
+        $operation = Operation::all();
+        if ($authuser->id == $user->id) {
+            $user = User::find($user->id);
+        } else {
+            return redirect()->route('wall');
+        }
+
+        return view('intra.user.edituser', ['user' => $user, 'role' => $role->except('1'), 'operation' => $operation->except('1'), 'authuser' => $authuser]);
+    }
+
     public function edit($id)
     {
+        $authuser = Auth::user();
         $role = Role::all();
         $operation = Operation::all();
         $user = User::find($id);
 
-        return view('intra.user.edit', ['user' => $user, 'role' => $role->except('1'), 'operation' => $operation->except('1')]);
+        return view('intra.user.edit', ['user' => $user, 'role' => $role->except('1'), 'operation' => $operation->except('1'), 'authuser' => $authuser]);
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->except('_token', 'password');
+
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('Image'), $filename);
+            $data['photo'] = $filename;
+        }
+
         User::find($id)->update($data);
 
         return redirect()->route('cad_user');

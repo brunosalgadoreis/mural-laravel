@@ -47,10 +47,10 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     @auth
-                        <a href="/sair" class="nav-link text-danger">Sair</a>
+                        <a href="/exit" class="nav-link text-danger">Sair</a>
                     @endauth
                     @guest
-                        <a href="/intra/entrar" class="nav-link">Entrar</a>
+                        <a href="/intra/login" class="nav-link">Entrar</a>
                     @endguest
                 </li>
             </ul>
