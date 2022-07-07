@@ -32,6 +32,9 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/intra/user/update/{id}', 'Intra\UserController@update');
         Route::delete('/intra/user/{id}', 'Intra\UserController@destroy');
 
+        Route::get('/intra/import', 'Intra\UserController@import')->name('import_user');
+        Route::post('/intra/import', 'Intra\UserController@importExcel')->name('import_excel');
+
         Route::get('/intra/operation', 'Intra\OperationController@create')->name('cad_operation');
         Route::post('/intra/operation', 'Intra\OperationController@store');
         Route::delete('/intra/operation/{id}', 'Intra\OperationController@destroy');

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Intra;
 
 use App\Http\Controllers\Controller;
+use App\Imports\UsersImport;
 use App\Operation;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -15,7 +17,7 @@ class UserController extends Controller
     public function create()
     {
         $authuser = Auth::user();
-        $user = User::with('role', 'operation')->get();
+        $user = User::with('role', 'operation')->paginate(10);
         $role = Role::all();
         $operation = Operation::all();
 
@@ -27,6 +29,8 @@ class UserController extends Controller
         $data = $request->except('_token');
         $data['password'] = bcrypt($data['password']);
         User::create($data);
+
+
 
         return redirect()->route('cad_user');
     }
@@ -81,5 +85,18 @@ class UserController extends Controller
         );
 
         return redirect()->route('cad_user');
+    }
+
+    public function import()
+    {
+        $authuser = Auth::user();
+        return view('intra.user.import', ['authuser' => $authuser]);
+    }
+
+    public function importExcel(Request $request)
+    {
+        $file = $request->file('excel');
+        Excel::import(new UsersImport, $file);
+        return redirect('/intra/wall')->with('success', 'All good!');
     }
 }

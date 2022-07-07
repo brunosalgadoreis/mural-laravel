@@ -90,4 +90,5 @@
             </li>
         </div>
     @endforeach
+    {{ $user->links() }}
 @endsection
